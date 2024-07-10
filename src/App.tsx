@@ -8,11 +8,23 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import ImageModal from "./components/ImageModal/ImageModal";
 
+export type GalleryElement = {
+  id: string;
+  urls: {
+    regular: string;
+    small: string;
+  };
+  slug: string;
+};
+export type Gallery = {
+  results: GalleryElement[];
+};
+
 function App() {
   const [isSearching, setIsSearching] = useState(false);
   const [isError, setIsError] = useState(false);
   const [loadMore, setLoadMore] = useState(false);
-  const [gallery, setGallery] = useState([]);
+  const [gallery, setGallery] = useState<GalleryElement[]>([]);
   const [filter, setFilter] = useState("");
   const [modal, setModal] = useState("");
   const [page, setPage] = useState(1);
@@ -23,7 +35,7 @@ function App() {
     setLoadMore(false);
 
     try {
-      const response = await axios.get(
+      const response = await axios.get<Gallery>(
         `https://api.unsplash.com/search/photos`,
         {
           params: {
@@ -37,9 +49,9 @@ function App() {
       );
 
       setGallery((prevGallery) =>
-        page != 1
+        page !== 1
           ? [...prevGallery, ...response.data.results]
-          : response.data.results
+          : [...response.data.results]
       );
 
       if (response.data.results.length == 12) {

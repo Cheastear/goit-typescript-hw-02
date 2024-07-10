@@ -1,17 +1,9 @@
 import ImageCard from "./ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
-
-export type Element = {
-  id: string;
-  urls: {
-    regular: string;
-    small: string;
-  };
-  slug: string;
-};
+import { GalleryElement } from "../../App";
 
 type Prop = {
-  images: Element[];
+  images: GalleryElement[];
   onClick: (utlImg: string) => void;
 };
 

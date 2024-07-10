@@ -1,7 +1,7 @@
-import { Element } from "../ImageGallery";
+import { GalleryElement } from "../../../App";
 
 type Prop = {
-  elem: Element;
+  elem: GalleryElement;
   onClick: (utlImg: string) => void;
 };
 

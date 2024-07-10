@@ -3,12 +3,12 @@ import css from "./ImageModal.module.css";
 
 Modal.setAppElement("#root");
 
-interface ImageModalProps {
+interface Props {
   url: string;
   onClose: () => void;
 }
 
-const ImageModal = ({ url, onClose }: ImageModalProps) => {
+const ImageModal = ({ url, onClose }: Props) => {
   return (
     <Modal
       isOpen={url !== ""}
