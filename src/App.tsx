@@ -17,7 +17,7 @@ function App() {
   const [modal, setModal] = useState("");
   const [page, setPage] = useState(1);
 
-  const fetchImages = async (filter, page) => {
+  const fetchImages = async (filter: string, page: number) => {
     setIsSearching(true);
     setIsError(false);
     setLoadMore(false);
@@ -59,7 +59,7 @@ function App() {
     }
   }, [filter, page]);
 
-  const handleSubmit = (filter) => {
+  const handleSubmit = (filter: string) => {
     setFilter(filter);
     setPage(1);
   };
@@ -68,7 +68,7 @@ function App() {
     setPage(page + 1);
   };
 
-  const handleModal = (urlImg) => {
+  const handleModal = (urlImg: string) => {
     setModal(urlImg);
   };
 
@@ -95,14 +95,16 @@ function App() {
 
       {isError && (
         <ErrorMessage>
-          Whoops, something went wrong! Please try reloading this page!
+          <p>Whoops, something went wrong! Please try reloading this page!</p>
         </ErrorMessage>
       )}
 
       {modal && <ImageModal url={modal} onClose={onCloseModal} />}
 
       {loadMore && (
-        <LoadMoreBtn onClick={handleLoadMore}>Load More</LoadMoreBtn>
+        <LoadMoreBtn onClick={handleLoadMore}>
+          <p>Load More</p>
+        </LoadMoreBtn>
       )}
     </>
   );

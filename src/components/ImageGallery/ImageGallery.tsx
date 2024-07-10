@@ -1,9 +1,21 @@
-import PropTypes from "prop-types";
-
 import ImageCard from "./ImageCard/ImageCard";
 import css from "./ImageGallery.module.css";
 
-const ImageGallery = ({ images, onClick }) => {
+export type Element = {
+  id: string;
+  urls: {
+    regular: string;
+    small: string;
+  };
+  slug: string;
+};
+
+type Prop = {
+  images: Element[];
+  onClick: (utlImg: string) => void;
+};
+
+const ImageGallery = ({ images, onClick }: Prop) => {
   return (
     <ul className={css.gallery}>
       {images.map((elem) => {
@@ -15,11 +27,6 @@ const ImageGallery = ({ images, onClick }) => {
       })}
     </ul>
   );
-};
-
-ImageGallery.propTypes = {
-  images: PropTypes.array,
-  onClick: PropTypes.func,
 };
 
 export default ImageGallery;

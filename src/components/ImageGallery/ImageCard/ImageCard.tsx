@@ -1,6 +1,11 @@
-import PropTypes from "prop-types";
+import { Element } from "../ImageGallery";
 
-const ImageCard = ({ elem, onClick }) => {
+type Prop = {
+  elem: Element;
+  onClick: (utlImg: string) => void;
+};
+
+const ImageCard = ({ elem, onClick }: Prop) => {
   return (
     <>
       <img
@@ -10,11 +15,6 @@ const ImageCard = ({ elem, onClick }) => {
       />
     </>
   );
-};
-
-ImageCard.propTypes = {
-  elem: PropTypes.object,
-  onClick: PropTypes.func,
 };
 
 export default ImageCard;
